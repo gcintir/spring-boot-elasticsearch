@@ -20,9 +20,28 @@ public class SpringBootElasticsearchApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		boolean response = elasticSearchService.createIndex("test_index2");
-		log.info("test_index created: {}", response);
-		response = elasticSearchService.deleteIndex("test_index");
-		log.info("test_index deleted: {}", response);
+		//boolean response = elasticSearchService.createIndex("person");
+		//log.info("test_index created: {}", response);
+		//response = elasticSearchService.deleteIndex("test_index");
+		//log.info("test_index deleted: {}", response);
+
+		savePerson();
+	}
+
+	 void savePerson() {
+
+		Person p = new Person();
+		p.setId("p3");
+		p.setAge(25);
+		p.setName("admin3");
+		log.info("person saved resp: " + elasticSearchService.savePerson(p));
+
+		p.setAge(35);
+		log.info("person updated: " + elasticSearchService.updatePerson(p));
+
+		log.info("retrieved person {}", elasticSearchService.findPersonById(p.getId()));
+
+		log.info("deleted person with id:{}", elasticSearchService.deletePersonById("p3"));
+
 	}
 }
