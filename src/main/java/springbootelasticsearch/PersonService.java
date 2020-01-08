@@ -27,7 +27,7 @@ import java.util.Map;
 
 @Service
 @Log4j2
-public class ElasticSearchService {
+public class PersonService {
 
     private RestHighLevelClient esRestClient;
 
@@ -37,7 +37,7 @@ public class ElasticSearchService {
     private static final String TYPE = "_doc";
 
     @Autowired
-    public ElasticSearchService(RestHighLevelClient esRestClient, ObjectMapper objectMapper) {
+    public PersonService(RestHighLevelClient esRestClient, ObjectMapper objectMapper) {
         this.esRestClient = esRestClient;
         this.objectMapper = objectMapper;
     }

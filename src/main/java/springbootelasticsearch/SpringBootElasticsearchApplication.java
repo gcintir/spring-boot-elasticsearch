@@ -12,7 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootElasticsearchApplication implements ApplicationRunner {
 
 	@Autowired
-	private ElasticSearchService elasticSearchService;
+	private PersonService elasticSearchService;
+
+	@Autowired
+	private WordService wordService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootElasticsearchApplication.class, args);
@@ -24,8 +27,16 @@ public class SpringBootElasticsearchApplication implements ApplicationRunner {
 		//log.info("test_index created: {}", response);
 		//response = elasticSearchService.deleteIndex("test_index");
 		//log.info("test_index deleted: {}", response);
+		//savePerson();
+		saveWord();
+	}
 
-		savePerson();
+	void createWordIndex() {
+		log.info("word index created: {}", wordService.createIndex());
+	}
+
+	void saveWord() {
+		wordService.saveWord();
 	}
 
 	 void savePerson() {
