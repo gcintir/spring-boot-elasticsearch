@@ -17,6 +17,9 @@ public class SpringBootElasticsearchApplication implements ApplicationRunner {
 	@Autowired
 	private WordService wordService;
 
+	@Autowired
+	private CarService carService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootElasticsearchApplication.class, args);
 	}
@@ -28,7 +31,22 @@ public class SpringBootElasticsearchApplication implements ApplicationRunner {
 		//response = elasticSearchService.deleteIndex("test_index");
 		//log.info("test_index deleted: {}", response);
 		//savePerson();
-		saveWord();
+		//saveWord();
+		testCarService();
+	}
+
+	void testCarService() {
+		//carService.createIndexWithExplicitMapping();
+		//carService.saveBulkData();
+		//carService.searchData1();
+		//carService.searchNormalCarsWithPagination();
+		//carService.searchDieselCarsByBool2();
+		//carService.searchJeepOrSportCars();
+		//carService.searchCarsPriceBetween_50000_150000();
+		//carService.getBrands();
+		//carService.getAggregationByCategory();
+		//carService.getCountByCountApi();
+		carService.getCarsHaving_10_000_price_By_Pagination();
 	}
 
 	void createWordIndex() {

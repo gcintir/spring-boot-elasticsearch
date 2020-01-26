@@ -24,6 +24,44 @@ import java.util.Map;
 @Log4j2
 public class WordService {
 
+    /**
+     * {
+     *   "word" : {
+     *     "mappings" : {
+     *       "properties" : {
+     *         "creationTime" : {
+     *           "type" : "date",
+     *           "format" : "yyyy-MM-dd HH:mm:ss"
+     *         },
+     *         "id" : {
+     *           "type" : "text"
+     *         },
+     *         "info" : {
+     *           "properties" : {
+     *             "createdBy" : {
+     *               "type" : "text"
+     *             }
+     *           }
+     *         },
+     *         "meaningList" : {
+     *           "properties" : {
+     *             "description" : {
+     *               "type" : "text"
+     *             },
+     *             "meaningType" : {
+     *               "type" : "text"
+     *             }
+     *           }
+     *         },
+     *         "ownerIdList" : {
+     *           "type" : "long"
+     *         }
+     *       }
+     *     }
+     *   }
+     * }
+     */
+
     private RestHighLevelClient esRestClient;
 
     private ObjectMapper objectMapper;
@@ -135,3 +173,4 @@ public class WordService {
         return objectMapper.convertValue(map, Word.class);
     }
 }
+
